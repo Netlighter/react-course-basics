@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real React</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script>
+        const Book = (props) => {
+            console.log(props)
+
+            // return (
+            //     <div>
+            //     <h2>{props.name}</h2>
+            //     <p>{props.year}</p>
+            //     <p>{props.price}</p>
+            //     </div>
+            // )
+
+            return React.createElement('div', {}, [
+                React.createElement('h2', {}, props.name),
+                React.createElement('p', {}, props.year),
+                React.createElement('p', {}, props.price),
+            ])
+        }
+    
+        const App = () => {
+            
+            // return (
+            //     <div>
+            //     <Book name="1984" year='1983' price="1000" />
+            //     <Book name="1985" year='1983' price="2000" />
+            //     <Book name="1986" year='1983' price="45000" />
+            //     </div>
+            // );
+
+            return React.createElement('div', {}, [
+                React.createElement("h1", {id: 'hello', className: 'class1'}, 'Hello from React'),
+                React.createElement(Book, {name: '1984', year: 1983, price: 1000}),
+                React.createElement(Book, {name: 'React Fresh Start', year: 2021, price: 10000}),
+                React.createElement(Book, {name: 'Backend with Java', year: 1995, price: 15}),
+                
+            ])
+            
+            
+        }
+
+        ReactDOM.render(React.createElement(App), document.getElementById('root'));
+    </script>
+</body>
+</html>
