@@ -16,6 +16,18 @@ class App extends Component {
     textCount: 0,
   };
 
+/*
+  for alternative method u need to use constructor and with `super();` line and write:
+  this.sampleFunc() = this.sampleFunc.bind(this); //привязка контекста this к функции
+
+  and then write func:
+  sampleFunc () {
+    return this.state.textCount
+  }
+*/
+  
+
+
   // ключи стейта считаются константами
   // реакт работает по принципу иммутабельности
   // при изменении каких-либо объектов, он их меняет, но при отрисовке это не отслеживается
@@ -51,19 +63,42 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{
+        margin: 'auto',
+        width: '80px'
+      }}>
         Hello World
-        <button onClick={this.handleClick}>
+
+        <button style={{
+          margin: '0 .4rem', 
+          display: 'inline-block'
+          }} 
+          onClick={this.handleClick}
+        >
           {this.state.count}
         </button>
-        .......
+
         <button className="add" onClick={this.addClick}>
           +
         </button>
-        {">"} {this.state.textCount} {"<"}
+
+        <span style={{
+          margin: '0 .75rem', 
+          display: 'inline-block'
+          }}
+        >
+            {this.state.textCount}
+        </span>
+
         <button className="sub" onClick={this.subClick}>
           -
         </button>
+
+        {/* third method is to use anon func like code snippet */}
+        <button onClick={() => this.setState({count: this.state.count + 100})}>
+          anon func here!
+        </button>
+        
       </div>
     );
   }
