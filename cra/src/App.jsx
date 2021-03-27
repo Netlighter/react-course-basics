@@ -14,6 +14,9 @@ class App extends Component {
   state = {
     count: 0,
     textCount: 0,
+    posts: [],
+    loading: true,
+    comments: [],
   };
 
 /*
@@ -61,13 +64,36 @@ class App extends Component {
     this.setState({textCount: this.state.textCount-1})
   }
 
+  // отследить монтирование
+  componentDidMount() {
+    console.log('componentDidMount');
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(resp => resp.json())
+      .then(data => this.setState({posts: data, loading: false}))
+
+    this.timerId = setInterval(() => {
+      fetch('https://jsonplaceholder.typicode.com/comments')
+      .then(resp => resp.json())
+      .then(data => this.setState({comments: data}))  
+    }, 3000)
+  }
+  // отследить обновление
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
+  }
+
+  componentWillUnmount() {
+    // remove timer to reduce lag
+    clearInterval(this.timerId);
+  }
+
   render() {
+    console.log('render', this.state.textCount);
     return (
-      <div className="App" style={{
-        margin: 'auto',
-        width: '80px'
-      }}>
-        Hello World
+      <div className="App">
+        {this.state.loading ? <h3>Loading...</h3> : <h3>
+          {this.state.posts.length} posts was loaded.
+        </h3> }
 
         <button style={{
           margin: '0 .4rem', 
@@ -98,7 +124,7 @@ class App extends Component {
         <button onClick={() => this.setState({count: this.state.count + 100})}>
           anon func here!
         </button>
-        
+
       </div>
     );
   }
