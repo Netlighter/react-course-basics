@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import Timer from './Timer';
-import Clicker from './Clicker';
-import Fetcher from './Fetcher';
+import Timer from './components/Timer';
+import Clicker from './components/Clicker';
+import Fetcher from './components/Fetcher';
+import Collection from './components/Collection';
+
+
 
 class App extends Component {
 
@@ -17,6 +20,9 @@ class App extends Component {
        
         {/* advanced */}
         <Timer />
+
+        {/* last important */}
+        <Collection />
 
       </div>
     );
