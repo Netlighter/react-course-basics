@@ -3,13 +3,13 @@ Roadmap provided by the website [roadmap.sh](http://roadmap.sh/). All the progre
 ## Fundamental Topics
 - [x] Create React App
 - [x] JSX
-- [ ] Components
-  - [ ] Functional
-  - [ ] Class
-- [ ] Props vs State
+- [x] Components
+  - [x] Functional
+  - [x] Class
+- [x] Props vs State
 - [x] Conditional Rendering
-- [ ] Components Life Cycle
-- [ ] Lists and Keys
+- [x] Components Life Cycle
+- [x] Lists and Keys
 - [ ] Composition vs Inheritance
 - [ ] Basic Hooks
   - [ ] useState
