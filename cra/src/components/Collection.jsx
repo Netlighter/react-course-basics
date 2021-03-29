@@ -15,6 +15,12 @@ class Collection extends Component {
     console.log('Collection.jsx setState update')
   }
 
+  removePost = (id) => {
+    this.setState({posts: 
+      this.state.posts.filter(post => post.id !== id
+      )})
+  }
+
   render() {
     // деструктуризация стейтов
     // (позволяет сокращать длину обращений)
@@ -27,7 +33,7 @@ class Collection extends Component {
         ))}
 
         {/* drop it down as callback */}
-        <Posts posts={posts} cb={this.handleSth}/>
+        <Posts rm={this.removePost} posts={posts} cb={this.handleSth}/>
       </div>
     )
   }
