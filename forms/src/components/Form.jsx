@@ -7,6 +7,8 @@ class Form extends Component {
     firstName: '',
     email: '',
     message: '',
+    subscription: false,
+    gender: ''
   }
 
   handleChange = (event) => {
@@ -14,7 +16,11 @@ class Form extends Component {
     // на месте ключа использовать [переменная]
     // названия инпутов мы задаем и стейтам прописываем такие же
     // тогда при подстановке в [] в стейте найдется та переменная
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleCheckboxChange = (event) => {
+    this.setState({ [event.target.name]: event.target.checked })
   }
 
   validateName = () => {
@@ -25,24 +31,25 @@ class Form extends Component {
 
   validateEmail = () => {
     if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test
-    (this.state.email)){
+      (this.state.email)) {
       alert("You have entered an invalid email address!")
     }
   }
 
   render() {
-    const {firstName, email, message} = this.state;
+    const { firstName, email, message, select, subscription, gender } = this.state;
+
     return <div>
-      <input 
-        type="text" 
+      <input
+        type="text"
         name="firstName"
         placeholder="firstName"
         value={firstName}
         onChange={this.handleChange}
         onBlur={this.validateName}
       />
-      <input 
-        type="email" 
+      <input
+        type="email"
         name="email"
         placeholder="email"
         value={email}
@@ -50,9 +57,31 @@ class Form extends Component {
         onBlur={this.validateEmail}
       />
       <br />
-      <textarea name="message" value={message} onChange={this.handleChange}/>
+      <textarea name="message" value={message} onChange={this.handleChange} />
+      <br />
+      <select name="select" value={select} onChange={this.handleChange}>
+        <option value="" disabled></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <br />
+      <label>
+        <input
+          type="checkbox"
+          name="subscription"
+          checked={subscription}
+          onChange={this.handleCheckboxChange}
+        />
+        Lost your money!
+      </label>
+      <br />
+      <input type="radio" name="gender" value="male"
+        onChange={this.handleChange} checked={gender === "male"} /> Male
+      <input type="radio" name="gender" value="female"
+        onChange={this.handleChange} checked={gender === "female"} /> Female
     </div>
   }
 }
 
-export {Form}
+export { Form }
