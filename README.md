@@ -11,8 +11,8 @@ Roadmap provided by the website [roadmap.sh](http://roadmap.sh/). All the progre
 - [x] Components Life Cycle
 - [x] Lists and Keys
 - [ ] Composition vs Inheritance
-- [ ] Basic Hooks
-  - [ ] useState
-  - [ ] useEffect
+- [x] Basic Hooks
+  - [x] useState
+  - [x] useEffect
 ---
 *Coming soon...*
